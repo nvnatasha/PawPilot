@@ -31,6 +31,31 @@ function monitoringValue(field, entry) {
   return entry ? formatMonitoringValue(field.key, entry) : '';
 }
 
+const printMonitoringLabels = {
+  vaporizerPercent: 'Vapor %',
+  oxygenLMin: 'O₂ L/min',
+  ecgRhythm: 'ECG',
+  pulseQuality: 'Pulse',
+  anestheticDepth: 'Depth',
+  eyePosition: 'Eye pos.',
+  painResponse: 'Pain resp.',
+  ventilatorRate: 'Vent rate',
+  peakAirwayPressure: 'PIP',
+  tidalVolume: 'TV',
+};
+
+function printMonitoringLabel(field) {
+  return printMonitoringLabels[field.key] || field.label;
+}
+
+function compactPrintTime(iso) {
+  if (!iso) return '';
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  return time.replace(' AM', 'a').replace(' PM', 'p');
+}
+
 function pointHasActualTimeDifference(point, entry) {
   if (!entry?.timestamp || !point?.timestamp) return false;
   return new Date(entry.timestamp).getTime() !== new Date(point.timestamp).getTime();
@@ -45,14 +70,14 @@ function AnesthesiaMonitoringPrintTable({ fields, monitoring, points }) {
           {points.map((point) => {
             const entry = entryForPoint(monitoring.entries, point);
             const marker = pointHasActualTimeDifference(point, entry) ? '*' : '';
-            return <th key={point.timestamp}>{displayTime(point.timestamp)}{marker}</th>;
+            return <th key={point.timestamp}>{compactPrintTime(point.timestamp)}{marker}</th>;
           })}
         </tr>
       </thead>
       <tbody>
         {fields.map((field) => (
           <tr key={field.key}>
-            <th>{field.label}</th>
+            <th>{printMonitoringLabel(field)}</th>
             {points.map((point) => {
               const entry = entryForPoint(monitoring.entries, point);
               return <td key={point.timestamp}>{monitoringValue(field, entry)}</td>;
@@ -267,7 +292,7 @@ export default function PatientRecordPrintLayout({ patient, record }) {
                   .filter(({ entry }) => hasMeaningfulMonitoringValue(entry?.notes))
                   .map(({ point, entry }) => (
                     <li key={`${point.timestamp}-note`}>
-                      {displayTime(point.timestamp)} — {entry.notes}
+                      {compactPrintTime(point.timestamp)} — {entry.notes}
                     </li>
                   ))}
               </ul>

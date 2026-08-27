@@ -93,8 +93,10 @@ describe('PatientRecordPrintLayout', () => {
     expect(container.querySelector(`.${abandonedFlowsheetClass}`)).not.toBeInTheDocument();
     expect(container.querySelector(`.${abandonedMonitoringClass}`)).not.toBeInTheDocument();
     expect(table.querySelectorAll('thead th')).toHaveLength(19);
-    expect(within(table).getByText('Vaporizer %')).toBeInTheDocument();
+    expect(within(table).getByText('Vapor %')).toBeInTheDocument();
     expect(within(table).getByText('O₂ L/min')).toBeInTheDocument();
+    expect([...table.querySelectorAll('thead th')].some((cell) => /\d{1,2}:\d{2}[ap]\*?/.test(cell.textContent))).toBe(true);
+    expect(within(table).queryByText('Vaporizer %')).not.toBeInTheDocument();
     expect(screen.queryByText(/Monitoring Page/)).not.toBeInTheDocument();
   });
 

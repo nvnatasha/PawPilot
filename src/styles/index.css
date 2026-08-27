@@ -1167,8 +1167,8 @@ small {
 
 @media print {
   @page {
-    margin: 0.5in;
-    size: letter;
+    margin: 0.35in;
+    size: letter landscape;
   }
 
   :root {
@@ -1273,19 +1273,10 @@ small {
   }
 
   .anesthesia-monitoring-print-table {
-    font-size: 8.5pt;
-  }
-
-  .anesthesia-monitoring-print-table th,
-  .anesthesia-monitoring-print-table td {
-    padding: 0.045in;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  .anesthesia-monitoring-print-table th:first-child,
-  .anesthesia-monitoring-print-table td:first-child {
-    text-align: left;
+    width: auto;
+    max-width: 100%;
+    font-size: 8pt;
+    line-height: 1.12;
   }
 
   .print-grid-table .day {
@@ -1308,14 +1299,28 @@ small {
 
   .print-record th,
   .print-record td {
-    border: 1px solid #777777;
-    padding: 0.06in;
+    border: 0.5pt solid #777777;
+    padding: 0.04in;
     text-align: left;
     vertical-align: top;
   }
 
   .print-record th {
     background: #eeeeee;
+  }
+
+  .anesthesia-monitoring-print-table th,
+  .anesthesia-monitoring-print-table td {
+    padding: 0.025in 0.035in;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .anesthesia-monitoring-print-table th:first-child,
+  .anesthesia-monitoring-print-table td:first-child {
+    min-width: 0.72in;
+    text-align: left;
   }
 
   .print-notes {

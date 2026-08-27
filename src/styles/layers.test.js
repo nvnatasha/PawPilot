@@ -63,4 +63,17 @@ describe('application layer tokens', () => {
     expect(css).not.toContain(abandonedMonitoringClass);
     expect(css).not.toContain(abandonedFirstMonitoringClass);
   });
+
+  it('keeps anesthesia monitoring print styling simple and compact', () => {
+    const monitoringPrintBlock = cssBlock('.anesthesia-monitoring-print-table');
+    const monitoringCellBlock = cssBlock('.anesthesia-monitoring-print-table th,\n  .anesthesia-monitoring-print-table td');
+
+    expect(css).toContain('size: letter landscape');
+    expect(css).toContain('margin: 0.35in');
+    expect(monitoringPrintBlock).toContain('width: auto');
+    expect(monitoringPrintBlock).toContain('font-size: 8pt');
+    expect(monitoringCellBlock).toContain('padding: 0.025in 0.035in');
+    expect(monitoringCellBlock).toContain('white-space: nowrap');
+    expect(css).not.toContain('ANESTHESIA_PRINT_COLUMNS_PER_PAGE');
+  });
 });
