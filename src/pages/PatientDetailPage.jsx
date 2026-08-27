@@ -35,6 +35,11 @@ const moduleCards = [
     path: '/calculators',
     items: ['Quick technician calculations', 'Dose and concentration support', 'Reusable patient weight'],
   },
+  {
+    title: 'Trends',
+    path: 'trends',
+    items: ['Vitals and labs', 'Hospitalization-wide review', 'Metric CSV export'],
+  },
 ];
 
 export default function PatientDetailPage() {
@@ -97,7 +102,7 @@ export default function PatientDetailPage() {
             to={module.path.startsWith('/') ? module.path : `/patients/${patient.id}/${module.path}`}
           >
             <span className="module-kicker">
-              {module.title === 'Hospitalization' ? 'Treatment sheet' : module.title === 'Anesthesia' ? 'Setup & monitoring' : 'Future module'}
+              {module.title === 'Hospitalization' ? 'Treatment sheet' : module.title === 'Anesthesia' ? 'Setup & monitoring' : module.title === 'Trends' ? 'Labs & monitoring' : 'Future module'}
             </span>
             <h3>{module.title}</h3>
             {module.title === 'Anesthesia' && (
@@ -112,6 +117,11 @@ export default function PatientDetailPage() {
                 {activeHospitalization
                   ? `Active · Next: ${getNextTreatment(activeHospitalization)}`
                   : 'No active hospitalization · Start Hospitalization'}
+              </p>
+            )}
+            {module.title === 'Trends' && (
+              <p className="clinical-note">
+                {activeHospitalization ? 'Review recorded hospitalization values' : 'Available after hospitalization data exists'}
               </p>
             )}
             <ul>

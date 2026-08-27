@@ -743,6 +743,92 @@ small {
   padding: 1rem;
 }
 
+.trend-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem;
+}
+
+.trend-summary-card {
+  display: grid;
+  gap: 0.3rem;
+  min-height: 7rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: #11181b;
+  padding: 0.85rem;
+  color: var(--muted-strong);
+  text-align: left;
+}
+
+.trend-summary-card:hover,
+.trend-summary-card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.trend-summary-card strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.trend-chart-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.trend-chart-wrap {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: #11181b;
+  padding: 0.85rem;
+}
+
+.trend-chart {
+  display: block;
+  width: 100%;
+  min-width: 560px;
+  height: 260px;
+}
+
+.trend-axis,
+.trend-grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.trend-grid-line {
+  opacity: 0.55;
+}
+
+.trend-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.trend-point {
+  fill: var(--accent);
+  stroke: var(--accent-ink);
+  stroke-width: 1.5;
+}
+
+.trend-axis-label,
+.trend-chart-meta {
+  fill: var(--muted);
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.trend-chart-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
 .field-button-row {
   display: flex;
   align-items: end;

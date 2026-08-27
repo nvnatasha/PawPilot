@@ -7,6 +7,7 @@ import HospitalizationPage from './pages/HospitalizationPage.jsx';
 import NewPatientPage from './pages/NewPatientPage.jsx';
 import PatientDetailPage from './pages/PatientDetailPage.jsx';
 import PlaceholderPage from './pages/PlaceholderPage.jsx';
+import TrendsPage from './pages/TrendsPage.jsx';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="patients/new" element={<NewPatientPage />} />
         <Route path="patients/:id" element={<PatientDetailPage />} />
         <Route path="patients/:id/edit" element={<EditPatientPage />} />
+        <Route path="patients/:id/trends" element={<TrendsPage />} />
         <Route path="patients/:id/anesthesia" element={<AnesthesiaPage />} />
         <Route path="patients/:id/hospitalization" element={<HospitalizationPage />} />
         <Route path="calculators" element={<PlaceholderPage moduleName="Dosage Calculator" />} />
