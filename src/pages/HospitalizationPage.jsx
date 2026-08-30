@@ -561,6 +561,7 @@ export default function HospitalizationPage() {
           </div>
           <div className="hero-actions">
             <button className="primary-button" onClick={() => window.print()} type="button">Print / Save Record</button>
+            <Link className="ghost-button" to={`/patients/${patient.id}/handoff`}>Shift Handoff</Link>
             <button className="ghost-button" onClick={downloadJson} type="button">Download Record Data</button>
             <button className="ghost-button" onClick={downloadCsv} type="button">Download Timeline CSV</button>
             <Link className="secondary-button" to={`/patients/${patient.id}`}>Back to Patient</Link>

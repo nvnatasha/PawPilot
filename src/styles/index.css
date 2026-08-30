@@ -829,6 +829,91 @@ small {
   margin-top: 0.5rem;
 }
 
+.handoff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.handoff-card {
+  gap: 0.65rem;
+}
+
+.handoff-card h3 {
+  margin: 0;
+}
+
+.handoff-detail-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.handoff-detail-list div,
+.handoff-row {
+  display: grid;
+  grid-template-columns: minmax(6rem, 0.45fr) minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: start;
+}
+
+.handoff-detail-list dt,
+.handoff-row strong {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.handoff-detail-list dd {
+  margin: 0;
+}
+
+.handoff-block {
+  display: grid;
+  gap: 0.2rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.55rem;
+}
+
+.handoff-block:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.handoff-block p,
+.handoff-block small,
+.handoff-row span,
+.handoff-row small {
+  margin: 0;
+  color: var(--muted-strong);
+}
+
+.handoff-history-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.5fr) minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: #11181b;
+  padding: 0.75rem;
+  color: var(--text);
+  text-align: left;
+}
+
+.handoff-history-row:hover,
+.handoff-history-row:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  align-items: center;
+}
+
 .field-button-row {
   display: flex;
   align-items: end;
@@ -1217,6 +1302,10 @@ small {
     grid-template-columns: 1fr;
   }
 
+  .handoff-grid {
+    grid-template-columns: 1fr;
+  }
+
   .timeline-entry {
     grid-template-columns: 1fr;
   }
@@ -1274,7 +1363,8 @@ small {
   .topbar,
   .app-footer,
   .anesthesia-screen,
-  .hospitalization-screen {
+  .hospitalization-screen,
+  .handoff-screen {
     display: none !important;
   }
 
@@ -1418,5 +1508,29 @@ small {
     border-top: 1px solid #777777;
     padding-top: 0.08in;
     font-size: 9pt;
+  }
+
+  .handoff-print-record {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.25;
+  }
+
+  .handoff-print-record .print-header {
+    margin-bottom: 0.14in;
+  }
+
+  .handoff-print-record .print-section {
+    break-inside: avoid;
+    margin-bottom: 0.12in;
+  }
+
+  .handoff-print-record .print-section h2 {
+    margin-bottom: 0.04in;
+    font-size: 10.5pt;
+  }
+
+  .handoff-print-record p {
+    margin: 0 0 0.035in;
   }
 }

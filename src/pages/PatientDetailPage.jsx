@@ -40,6 +40,11 @@ const moduleCards = [
     path: 'trends',
     items: ['Vitals and labs', 'Hospitalization-wide review', 'Metric CSV export'],
   },
+  {
+    title: 'Shift Handoff',
+    path: 'handoff',
+    items: ['Current snapshot', 'Due next', 'Copy and print summary'],
+  },
 ];
 
 export default function PatientDetailPage() {
@@ -102,7 +107,7 @@ export default function PatientDetailPage() {
             to={module.path.startsWith('/') ? module.path : `/patients/${patient.id}/${module.path}`}
           >
             <span className="module-kicker">
-              {module.title === 'Hospitalization' ? 'Treatment sheet' : module.title === 'Anesthesia' ? 'Setup & monitoring' : module.title === 'Trends' ? 'Labs & monitoring' : 'Future module'}
+              {module.title === 'Hospitalization' ? 'Treatment sheet' : module.title === 'Anesthesia' ? 'Setup & monitoring' : module.title === 'Trends' ? 'Labs & monitoring' : module.title === 'Shift Handoff' ? 'Shift change' : 'Future module'}
             </span>
             <h3>{module.title}</h3>
             {module.title === 'Anesthesia' && (
@@ -122,6 +127,11 @@ export default function PatientDetailPage() {
             {module.title === 'Trends' && (
               <p className="clinical-note">
                 {activeHospitalization ? 'Review recorded hospitalization values' : 'Available after hospitalization data exists'}
+              </p>
+            )}
+            {module.title === 'Shift Handoff' && (
+              <p className="clinical-note">
+                {activeHospitalization ? 'Generate current summary' : 'Available with active hospitalization'}
               </p>
             )}
             <ul>

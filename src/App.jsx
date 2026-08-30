@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout.jsx';
 import AnesthesiaPage from './pages/AnesthesiaPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
+import HandoffPage from './pages/HandoffPage.jsx';
 import EditPatientPage from './pages/EditPatientPage.jsx';
 import HospitalizationPage from './pages/HospitalizationPage.jsx';
 import NewPatientPage from './pages/NewPatientPage.jsx';
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="patients/:id" element={<PatientDetailPage />} />
         <Route path="patients/:id/edit" element={<EditPatientPage />} />
         <Route path="patients/:id/trends" element={<TrendsPage />} />
+        <Route path="patients/:id/handoff" element={<HandoffPage />} />
         <Route path="patients/:id/anesthesia" element={<AnesthesiaPage />} />
         <Route path="patients/:id/hospitalization" element={<HospitalizationPage />} />
         <Route path="calculators" element={<PlaceholderPage moduleName="Dosage Calculator" />} />
